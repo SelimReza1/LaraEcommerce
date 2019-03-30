@@ -5,11 +5,7 @@
 <div class="container margin-top-2">
     <div class="row">
         <div class="col-md-4">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">First item</a>
-                <a href="#" class="list-group-item list-group-item-action">Second item</a>
-                <a href="#" class="list-group-item list-group-item-action">Third item</a>
-            </div>
+            @include('partials.sidebar')
         </div>
         <div class="col-md-8">
             <div class="widget">
@@ -17,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card">
-                            <img class="card-img-top feature" src="{{asset('image/samsung.jpg')}}" alt="Card image">
+                            <img class="card-img-top feature" src="{{asset('1.jpg')}}" alt="Card image">
                             <div class="card-body">
                                 <h4 class="card-title">Samsung</h4>
                                 <p class="card-text">Price - 50000</p>
@@ -47,7 +43,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card">
-                            <img class="card-img-top feature" src="{{asset('image/samsung.jpg')}}" alt="Card image">
+                            <img class="card-img-top feature" src="{{asset('1.jpg')}}" alt="Card image">
                             <div class="card-body">
                                 <h4 class="card-title">Samsung</h4>
                                 <p class="card-text">Price - 50000</p>
