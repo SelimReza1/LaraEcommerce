@@ -16,7 +16,7 @@
                             <div class="card">
                                 @php
                                 $i=1;
-                                @endphp
+                                 @endphp
                                 @foreach($product->images as $image)
                                     @if($i>0)
                                 <img class="card-img-top feature" src="{{asset('image/'.$image->image)}}" alt="Card image">
