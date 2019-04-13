@@ -34,7 +34,23 @@
 
                                 <div class="form-group">
                                     <label for="product_image">Product Image</label>
-                                    <input type="file" name="product_image" class="form-control">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="file" name="product_image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="product_image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="product_image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="product_image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="file" name="product_image[]" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

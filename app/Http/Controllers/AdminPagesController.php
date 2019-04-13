@@ -32,17 +32,18 @@ class AdminPagesController extends Controller
         $product->save();
 
         //ProductImage model insert image
-        if($request->hasFile('product_image')){
-        $image = $request->file('product_image');
-        $img = time() . '.' . $image->clientExtension();
-        $location = public_path('image/products/' . $img);
-        Image::make($image)->save($location);
+        if (count($request->product_image)>0){
+            foreach ($request->product_image as $image) {
+                $img = time() . '.' . $image->clientExtension();
+                $location = public_path('image/products/' . $img);
+                Image::make($image)->save($location);
 
-        $product_image = new ProductImage();
-        $product_image->product_id = $product->id;
-        $product_image->image = $img;
-        $product_image->save();
+                $product_image = new ProductImage();
+                $product_image->product_id = $product->id;
+                $product_image->image = $img;
+                $product_image->save();
 
+            }
         }
         return redirect()->route('admin.product.create');
     }
