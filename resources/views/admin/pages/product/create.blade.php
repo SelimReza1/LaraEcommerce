@@ -9,6 +9,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card-body">
+                            @include('admin.partials.message')
                             <form action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">

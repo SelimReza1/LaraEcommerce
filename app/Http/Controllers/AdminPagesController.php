@@ -20,6 +20,13 @@ class AdminPagesController extends Controller
 
     public function product_store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|max:155',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'body' => 'required',
+        ]);
         $product = new Product();
         $product->title = $request->title;
         $product->description = $request->description;
