@@ -19,7 +19,7 @@
                                  @endphp
                                 @foreach($product->images as $image)
                                     @if($i>0)
-                                <img class="card-img-top feature" src="{{asset('image/'.$image->image)}}" alt="Card image">
+                                <img class="card-img-top feature" src="{{asset('image/products/'.$image->image)}}" alt="Card image">
                                     @endif
                                     @php
                                     $i--;

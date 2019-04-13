@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductImage;
 use Illuminate\Http\Request;
-
+use Image;
 class AdminPagesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.pages.index');
     }
-    public function product_create(){
+
+    public function product_create()
+    {
         return view('admin.pages.product.create');
     }
-    public function product_store(Request $request){
+
+    public function product_store(Request $request)
+    {
         $product = new Product();
         $product->title = $request->title;
         $product->description = $request->description;
@@ -25,6 +31,19 @@ class AdminPagesController extends Controller
         $product->slug = str_slug($product->title);
         $product->save();
 
+        //ProductImage model insert image
+        if($request->hasFile('product_image')){
+        $image = $request->file('product_image');
+        $img = time() . '.' . $image->clientExtension();
+        $location = public_path('image/products/' . $img);
+        Image::make($image)->save($location);
+
+        $product_image = new ProductImage();
+        $product_image->product_id = $product->id;
+        $product_image->image = $img;
+        $product_image->save();
+
+        }
         return redirect()->route('admin.product.create');
     }
 }
