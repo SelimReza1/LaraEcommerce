@@ -17,6 +17,14 @@ class AdminPagesController extends Controller
     {
         return view('admin.pages.product.create');
     }
+    public function product_edit($id){
+        $product = Product::find($id);
+        return view('admin.pages.product.edit',compact('product'));
+    }
+    public function manage_products(){
+        $products = Product::orderBy('id', 'desc')->get();
+        return view('admin.pages.product.index',compact('products'));
+    }
 
     public function product_store(Request $request)
     {
@@ -25,7 +33,6 @@ class AdminPagesController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
-            'body' => 'required',
         ]);
         $product = new Product();
         $product->title = $request->title;
@@ -53,5 +60,24 @@ class AdminPagesController extends Controller
             }
         }
         return redirect()->route('admin.product.create');
+    }
+
+    public function product_update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:155',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+        ]);
+        $product = Product::find($id);
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->save();
+
+
+        return redirect()->route('admin.products');
     }
 }
